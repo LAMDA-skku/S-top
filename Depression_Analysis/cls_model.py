@@ -114,7 +114,6 @@ class BertRegressor(nn.Module):
         score = self.out(x)
         return score 
     
-    
 class BertTester():
     def __init__(self, training_config, model):
         self.training_config = training_config
@@ -186,19 +185,18 @@ def main():
     training_config.pad = 'max_length'
 
     label = dict()
-    label[0] = '우울'
-    label[1] = '무기력'
-    label[2] = '급격한 체중(식욕)변화'
-    label[3] = '수면장애'
-    label[4] = '정서불안'
-    label[5] = '피로'
-    label[6] = '과도한 죄책감 및 무가치함'
-    label[7] = '인지기능저하'
-    label[8] = '자살충동'
-    label[9] = '일상'
+    label[0] = 'depressed'   # 우울
+    label[1] = 'lethargic'   # 무기력
+    label[2] = 'apetite/weight problem'   # 급격한 체중(식욕)변화
+    label[3] = 'sleep disorder'   # 수면장애
+    label[4] = 'pyschomotor agitaion'   # 정서불안
+    label[5] = 'fatigued'   # 피로 
+    label[6] = 'guilt and worthless'   # 과도한 죄책감 및 무가치함 
+    label[7] = 'cognitive decline'   # 인지기능저하
+    label[8] = 'suicidal'   # 자살충동 
+    label[9] = 'ordinary'   # 일상 
 
-    bws_tokenizer = BertTokenizer.from_pretrained(os.path.join(model_path, 'bert-mini'), model_max_length=32)
-    dsm_tokenizer = BertTokenizer.from_pretrained(os.path.join(model_path, 'bert-mini'), model_max_length=32)
+    bert_tokenizer = BertTokenizer.from_pretrained(os.path.join(model_path, 'bert-mini'), model_max_length=32)
     bws_config = BertConfig.from_pretrained(os.path.join(model_path, 'bert-mini', 'bert_config.json'))
     dsm_config = BertConfig.from_pretrained(os.path.join(model_path, 'bert-mini', 'bert_config.json'), num_labels=10)
     bws_model = BertModel.from_pretrained(os.path.join(model_path, 'bert-mini'), config=bws_config)
@@ -214,7 +212,7 @@ def main():
     bws_reg.load_state_dict(torch.load(bws_model_name, map_location=torch.device('cpu')))
     dsm_model.load_state_dict(torch.load(dsm_model_name, map_location=torch.device('cpu')))
     
-    test_processor = BertProcessor(bws_config, training_config, bws_tokenizer)
+    test_processor = BertProcessor(bws_config, training_config, bert_tokenizer)
     bws_tester = BertTester(training_config, bws_reg)
     dsm_tester = BertTester(training_config, dsm_model)
     test_sent = "I'm very lonely" 
