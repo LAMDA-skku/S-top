@@ -12,6 +12,17 @@ from transformers import BertForSequenceClassification
 
 app = Flask(__name__, static_folder='./static/')
 
+'''
+def convert_score(score):
+    print(score)
+    if score > 1: 
+        score = 1
+    elif score < 0:
+        score = 0
+    score = int(score * 10)
+    return score
+'''
+
 def convert_score(score):
     bws_score = int(score) 
     if bws_score > 16: 
@@ -23,7 +34,20 @@ def convert_score(score):
     score = (bws_score - min_score) / (max_score - min_score)
     score = int(score * 10)
     return score
-    
+
+
+def preprocess_sentence(sentence):
+    '''
+    모델 학습 전에 전처리한 형태로 문장 전처리 
+    1. '.' 제거 
+    2. "'m -> am"  (Language Detect)
+    3. "can't  -> can not"   (Language Detect)
+    '''
+    input_sent = sentence.replace('.', '')
+    input_sent = input_sent.replace("'m", " am")
+    input_sent = input_sent.replace("can't", "can not")
+    return input_sent
+
 @app.route('/', methods=['GET', 'POST'])
 def main_page():
     user_input = ''
@@ -31,7 +55,9 @@ def main_page():
     emotions = ''
     if request.method == 'POST':
         user_input = request.form['user_text']
-        test_data = test_processor.convert_sentence(user_input)
+        model_input = preprocess_sentence(user_input)
+        # print(model_input)
+        test_data = test_processor.convert_sentence(model_input)
         test_sampler = test_processor.shuffle_data(test_data, 'test')
         test_loader = test_processor.load_data(test_data, test_sampler)
         bws_score, _ = bws_tester.get_score(test_loader, 1)
@@ -80,7 +106,7 @@ def main():
     bws_reg = BertRegressor(bws_config, bws_model)
     
     bws_model_name = os.path.join(model_path, 'bert_bws_mini.pt')
-    dsm_model_name = os.path.join(model_path, 'bert_dsm_mini.pt')
+    dsm_model_name = os.path.join(model_path, 'bert_mini_5.pt')
     bws_reg.load_state_dict(torch.load(bws_model_name, map_location=torch.device('cpu')))
     dsm_model.load_state_dict(torch.load(dsm_model_name, map_location=torch.device('cpu')))
     
