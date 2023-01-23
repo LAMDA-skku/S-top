@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAMDA LAB</title>
+    <link rel="stylesheet" href="./static/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:wght@200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="box">
+    <div class="split left">
+        <h1>Depression Analysis</h1>
+        <a href="/depression_analysis" class="btn btn1">START</a>
+    </div>
+        <div class="split right">
+            <h1>LAMDADE Chatbot</h1>
+            <a href="/chatbot" class="btn btn2">START</a>
+        </div>
+    </div>
+
+    <script>
+        const container = document.querySelector('.box');
+        const left = document.querySelector('.left');
+        const right = document.querySelector('.right');
+        left.addEventListener('mouseenter', () => {
+            container.classList.add('hover-left');
+        })
+        left.addEventListener('mouseleave', () => {
+            container.classList.remove('hover-left');
+        })
+        right.addEventListener('mouseenter', () => {
+            container.classList.add('hover-right');
+        })
+        right.addEventListener('mouseleave', () => {
+            container.classList.remove('hover-right');
+        })
+    </script>
+</body>
+</html>

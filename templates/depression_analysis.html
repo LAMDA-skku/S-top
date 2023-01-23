@@ -1,0 +1,119 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-top</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-md w-10">
+        <!--div class="row justify-content-md-center">
+            <div class="col col-md-auto mt-5">
+                <h3>
+                    <p class='fw-bold'>Are You Depressed ?</p>
+                </h3>
+            </div>
+            <div class="col-md-auto mt-5 g-5">
+            <form action="/">
+                <button type="submit" class="btn btn-outline-dark" style="float:right">Home</button>
+            </form>
+            </div>
+        </div-->
+        <div class="row justify-content-md-center">
+            <div class="col col-md-auto mt-5" style="width: 1115px;">
+                <h3>
+                    <p class='fw-bold'>Are You Depressed ?</p>
+                </h3>
+            </div>
+            <div class="col-md-auto mt-5">
+            <form action="/">
+                <button type="submit" class="btn btn-outline-dark">Home</button>
+            </form>
+            </div>
+        </div>
+        <form action="/depression_analysis" method="post">
+            <div class="row g-2 m-5">
+                <div class="col-md-11">
+                    <input type="text" name="user_text" class="form-control" placeholder="input text" aria-label="text">
+                </div>
+                <div class="col-md">
+                    <button type="submit" class="btn btn-outline-dark" style="color:gray; border-color:aliceblue; float:right">Submit</button>
+                </div>    
+            </div> 
+        </form> 
+        <div class="container-left">
+            <div class="row m-5">
+                <p class="text-break fs-6 fw-bold mt-1">User Input: {{user_input}}</p>
+            </div>
+            <div class="row m-5">
+                <p class="text-break fs-6 fw-bold mt-1">How much </p>
+                {% if minmax_score == 9999 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 0%">0%</div>
+                </div>
+                {% elif minmax_score == 0 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 0%; color: black; background-color:lemonchiffon">0%</div>
+                </div>
+                {% elif minmax_score == 1 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 10%; color: black; background-color:lemonchiffon;">10%</div>
+                </div>
+                {% elif minmax_score == 2 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 20%; color: black; background-color:lemonchiffon">20%</div>
+                </div>
+                {% elif minmax_score == 3 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 30%; color: black; background-color:lemonchiffon">30%</div>
+                </div>
+                {% elif minmax_score == 4 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 40%; color: black; background-color:lemonchiffon">40%</div>
+                </div>
+                {% elif minmax_score == 5 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%; color: black; background-color:lemonchiffon">50%</div>
+                </div>
+                {% elif minmax_score == 6 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 60%; color: black; background-color:lemonchiffon">60%</div>
+                </div>
+                {% elif minmax_score == 7 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 70%; color: black; background-color:lemonchiffon">70%</div>
+                </div>
+                {% elif minmax_score == 8 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 80%; color: black; background-color:lemonchiffon">80%</div>
+                </div>
+                {% elif minmax_score == 9 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 90%; color: black; background-color:lemonchiffon">90%</div>
+                </div>
+                {% elif minmax_score == 10 %}
+                <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 100%; color: black; background-color:lemonchiffon">100%</div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="hstack gap-2">
+                <!--div class="container-sm px-5" style="width: 30%; background-color:black;"--> <!--px: padding x, y-->
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade.png" class="img-thumbnail rounded-1" style="width:300px;" alt="lamdade">
+                </div>
+                <!--div class="container-xl border" style="width: 68%; background-color:white; border-color:yellow;"-->
+                <div class="container-xl" style="width: 70%;">
+                    <p class="text-md-start fs-5 fw-semibold"> Hello, I'm Lamdade !</p>
+                    {% if emotions != '' %}
+                    <p class="text-sm-start fw-light text-break"> Now you are in {{emotions}}</p>
+                    {% elif emotions == '' %}
+                    <p class="text-sm-start fw-light text-break"> You didn't text yet</p>
+                    {% endif %}
+                </div> 
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>   
+    </body>
+</html>
