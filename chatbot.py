@@ -91,7 +91,6 @@ app = Flask(__name__,static_url_path="/static")
 # 사용자 입력 발화 받은 후 답변 생성
 @app.route('/test', methods=['POST'])
 def reply():
-
     text = request.json['msg']
     user_context = [str(text)]
     
@@ -131,16 +130,15 @@ def reply():
         cross_score = c_func.text_emb(*c_func.input_text(user_context, response))
         rerank_list.append(cross_score.item())
     
-    
     # 최종 답변
     final_index = rerank_list.index(max(rerank_list))
     best_response = top_cand[final_index]
-
+    print(jsonify(text=best_response))
     return jsonify(text=best_response)
 
 @app.route("/")
 def chat():
-    return render_template("chat_ver1.html")
+    return render_template("chatbot.html")
 
 if __name__ == '__main__':
     app.run()
