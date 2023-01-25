@@ -45,7 +45,7 @@ def preprocess_sentence(sentence):
 def detectEmotion():
     user_input = ''
     minmax_score = 9999
-    emotions = ''
+    emotions = 'ordinary'
     if request.method == 'POST':
         user_input = request.form['user_text']
         model_input = preprocess_sentence(user_input)

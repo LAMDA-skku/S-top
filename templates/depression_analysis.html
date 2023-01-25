@@ -53,61 +53,99 @@
                 </div>
                 {% elif minmax_score == 0 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 0%; color: black; background-color:lemonchiffon">0%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 0%; color:gray; background-color:lemonchiffon">0%</div>
                 </div>
                 {% elif minmax_score == 1 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 10%; color: black; background-color:lemonchiffon;">10%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 10%; color:gray; background-color:lemonchiffon;">10%</div>
                 </div>
                 {% elif minmax_score == 2 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 20%; color: black; background-color:lemonchiffon">20%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 20%; color:gray; background-color:lemonchiffon">20%</div>
                 </div>
                 {% elif minmax_score == 3 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 30%; color: black; background-color:lemonchiffon">30%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 30%; color:gray; background-color:lemonchiffon">30%</div>
                 </div>
                 {% elif minmax_score == 4 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 40%; color: black; background-color:lemonchiffon">40%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 40%; color:gray; background-color:lemonchiffon">40%</div>
                 </div>
                 {% elif minmax_score == 5 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 50%; color: black; background-color:lemonchiffon">50%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 50%; color:gray; background-color:lemonchiffon">50%</div>
                 </div>
                 {% elif minmax_score == 6 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 60%; color: black; background-color:lemonchiffon">60%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 60%; color:gray; background-color:lemonchiffon">60%</div>
                 </div>
                 {% elif minmax_score == 7 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 70%; color: black; background-color:lemonchiffon">70%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 70%; color:gray; background-color:lemonchiffon">70%</div>
                 </div>
                 {% elif minmax_score == 8 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 80%; color: black; background-color:lemonchiffon">80%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 80%; color:gray; background-color:lemonchiffon">80%</div>
                 </div>
                 {% elif minmax_score == 9 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 90%; color: black; background-color:lemonchiffon">90%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 90%; color:gray; background-color:lemonchiffon">90%</div>
                 </div>
                 {% elif minmax_score == 10 %}
                 <div class="progress" role="progressbar" style="background-color:white;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: 100%; color: black; background-color:lemonchiffon">100%</div>
+                    <div class="progress-bar" style="font-weight: bold; width: 100%; color:gray; background-color:lemonchiffon">100%</div>
                 </div>
                 {% endif %}
             </div>
             <div class="hstack gap-2">
                 <!--div class="container-sm px-5" style="width: 30%; background-color:black;"--> <!--px: padding x, y-->
+                {% if emotions == 'depressed' %}
                 <div class="container-sm px-5" style="width: 30%;">
-                    <img src="../static/css/lamdade.png" class="img-thumbnail rounded-1" style="width:300px;" alt="lamdade">
+                    <img src="../static/image/lamdade_우울.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
                 </div>
+                {% elif emotions == 'lethargic' %}
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade_무기력.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
+                </div>
+                {% elif emotions == 'apetite/weight problem' %}
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade_체중변화.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
+                </div>
+                {% elif emotions == 'sleep disorder' %}
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade_수면장애.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
+                </div>
+                {% elif emotions == 'pyschomotor agitaion' %}
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade_정서불안.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
+                </div>
+                {% elif emotions == 'fatigued' %}
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade_피로.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
+                </div>
+                {% elif emotions == 'guilt and worthless' %}
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade_과도한죄책감.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
+                </div>
+                {% elif emotions == 'cognitive decline' %}
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade_인지기능저하.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
+                </div>
+                {% elif emotions == 'suicidal' %}
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade_자살충동.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
+                </div>
+                {% elif emotions == 'ordinary' %}
+                <div class="container-sm px-5" style="width: 30%;">
+                    <img src="../static/image/lamdade_일상.png" class="img-thumbnail rounded-1" style="width:300px; height: 300px;" alt="lamdade">
+                </div>
+                {% endif %}
                 <!--div class="container-xl border" style="width: 68%; background-color:white; border-color:yellow;"-->
                 <div class="container-xl" style="width: 70%;">
                     <p class="text-md-start fs-5 fw-semibold"> Hello, I'm Lamdade !</p>
-                    {% if emotions != '' %}
+                    {% if user_input != '' %}
                     <p class="text-sm-start fw-light text-break"> Now you are in {{emotions}}</p>
-                    {% elif emotions == '' %}
+                    {% elif user_input == '' %}
                     <p class="text-sm-start fw-light text-break"> You didn't text yet</p>
                     {% endif %}
                 </div> 
